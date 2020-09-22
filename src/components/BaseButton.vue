@@ -1,12 +1,12 @@
 <template>
-  <button v-on="$listeners" class="button" :class="buttonClass">
+  <button v-on="$listeners" class="button" v-bind="$attrs" :class="buttonClass">
     <slot />
   </button>
 </template>
 
 <script>
 export default {
-  name: "BaseButton",
+  inheritAttrs: false,
   props: {
     buttonClass: {
       type: String
