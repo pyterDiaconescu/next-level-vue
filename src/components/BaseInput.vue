@@ -1,13 +1,13 @@
 <template>
   <div>
     <label v-if="label">{{ label }}</label>
-    <input :value="value" @input="updateValue"/>
+    <input :value="value" @input="updateValue" v-bind="$attrs"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'BaseInput',
+  inheritAttrs: false,
   props: {
     label: {
       type: String,
