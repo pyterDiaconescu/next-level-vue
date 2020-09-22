@@ -2,7 +2,17 @@
   <div>
     <h1>Create an Event</h1>
     <form @submit.prevent="createEvent">
-      <base-select :options="categories" label="Add a category" v-model="event.category" class="field"/>
+      <base-select
+        :options="categories"
+        label="Add a category"
+        v-model="event.category"
+        class="field"
+        @blur="$v.event.category.$touch()"
+        :class="{error: $v.event.category.$error}"
+      />
+      <template v-if="$v.event.category.$error">
+        <p v-if="!$v.event.category.required" class="errorMessage">Category is required</p>
+      </template>
 
       <h3>Name & describe your event</h3>
 
