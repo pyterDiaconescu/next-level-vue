@@ -69,7 +69,7 @@
       <template v-if="$v.event.date.$error">
         <p v-if="!$v.event.date.required" class="errorMessage">Date is required</p>
       </template>
-      
+
       <base-select
         :options="times"
         label="Select a time"
@@ -84,7 +84,14 @@
       <!--
       <input type="submit" class="button -fill-gradient" value="Submit"/>
       -->
-      <base-button buttonClass="-fill-gradient">Submit</base-button>
+      <base-button
+        buttonClass="-fill-gradient"
+        type="submit"
+        :disabled="$v.$anyError"
+      >
+        Submit
+      </base-button>
+      <p v-if="$v.$anyError" class="errorMessage">Please fill out the required field(s)</p>
     </form>
   </div>
 </template>
@@ -128,19 +135,22 @@ export default {
   },
   methods: {
     createEvent() {
-      NProgress.start()
-      this.$store
-        .dispatch('event/createEvent', this.event)
-        .then(() => {
-          this.$router.push({
-            name: 'event-show',
-            params: { id: this.event.id }
+      this.$v.$touch() //Make $dirty every field
+      if (!this.$v.$invalid){ //if form is not invalid submit
+        NProgress.start()
+        this.$store
+          .dispatch('event/createEvent', this.event)
+          .then(() => {
+            this.$router.push({
+              name: 'event-show',
+              params: { id: this.event.id }
+            })
+            this.event = this.createFreshEventObject()
           })
-          this.event = this.createFreshEventObject()
-        })
-        .catch(() => {
-          NProgress.done()
-        })
+          .catch(() => {
+            NProgress.done()
+          })  
+      }
     },
     createFreshEventObject() {
       const user = this.$store.state.user.user
