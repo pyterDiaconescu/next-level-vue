@@ -11,7 +11,8 @@
       <p v-if="!$v.email.email !== false" class="errorMessage">Please enter a valid email</p>
       <p v-if="$v.email.required === false" class="errorMessage">Email is required</p>
     </div>
-    <button type="submit">Submit</button>
+    <button :disabled="$v.$invalid" type="submit">Submit</button>
+    <p v-if="$v.$anyError" class="errorMessage">Please fill out the required fields</p>
   </div>
 </template>
 
