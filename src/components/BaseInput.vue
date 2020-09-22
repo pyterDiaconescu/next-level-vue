@@ -1,7 +1,7 @@
 <template>
   <div>
     <label v-if="label">{{ label }}</label>
-    <input type="text" :value="value" @input="updateValue"/>
+    <input :value="value" @input="updateValue"/>
   </div>
 </template>
 

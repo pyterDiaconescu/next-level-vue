@@ -9,7 +9,7 @@
 
       <h3>Name & describe your event</h3>
       <div class="field">
-        <base-input label="Title" v-model="event.title"/>
+        <base-input label="Title" v-model="event.title" type="text" placeholder="Title"/>
       </div>
 
       <div class="field">
