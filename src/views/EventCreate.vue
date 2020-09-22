@@ -23,7 +23,7 @@
       <!--
       <input type="submit" class="button -fill-gradient" value="Submit"/>
       -->
-      <base-button>Submit</base-button>
+      <base-button buttonClass="-fill-gradient">Submit</base-button>
     </form>
   </div>
 </template>
