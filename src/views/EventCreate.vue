@@ -28,7 +28,7 @@
       <template v-if="$v.event.title.$error">
         <p v-if="!$v.event.title.required" class="errorMessage">Title is required</p>
       </template>
-      
+
       <base-input label="Description" v-model="event.description" type="text" placeholder="Add a description" class="field"/>
 
       <h3>Where is your event?</h3>
