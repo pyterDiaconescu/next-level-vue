@@ -9,12 +9,6 @@ import Vuelidate from 'vuelidate'
 
 Vue.use(Vuelidate)
 
-Vue.mixin({
-  mounted(){
-    console.log('I am mixed into every component')
-  }
-})
-
 Vue.config.productionTip = false
 
 const requireComponent = require.context(
