@@ -149,7 +149,7 @@ export default {
           })
           .catch(() => {
             NProgress.done()
-          })  
+          })
       }
     },
     createFreshEventObject() {
