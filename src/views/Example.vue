@@ -5,10 +5,11 @@
       placeholder="What's your email"
       v-model="email"
       @blur="$v.email.$touch()"
+      :class="{ error: $v.email.$error }"
     >
     <div v-if="$v.email.$error">
-      <p v-if="!$v.email.email !== false">Please enter a valid email</p>
-      <p v-if="$v.email.required === false">Email is required</p>
+      <p v-if="!$v.email.email !== false" class="errorMessage">Please enter a valid email</p>
+      <p v-if="$v.email.required === false" class="errorMessage">Email is required</p>
     </div>
     <button type="submit">Submit</button>
   </div>
