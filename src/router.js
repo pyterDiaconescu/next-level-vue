@@ -6,7 +6,8 @@ import EventShow from './views/EventShow.vue'
 import NotFound from '@/views/NotFound'
 import NetworkIssue from '@/views/NetworkIssue'
 import NProgress from 'nprogress'
-import store from '@/store/store';
+import store from '@/store/store'
+import Example from '@/views/Example'
 
 Vue.use(Router)
 
@@ -44,6 +45,10 @@ const router = new Router({
             }
           })
       }
+    },
+    {
+      path: '/example',
+      component: Example,
     },
     {
       path: '/404',
