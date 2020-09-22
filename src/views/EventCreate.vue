@@ -2,10 +2,7 @@
   <div>
     <h1>Create an Event</h1>
     <form @submit.prevent="createEvent">
-      <label>Select a category</label>
-      <select v-model="event.category">
-        <option v-for="cat in categories" :key="cat">{{ cat }}</option>
-      </select>
+      <base-select :options="categories" label="Add a category" v-model="event.category"/>
 
       <h3>Name & describe your event</h3>
 
@@ -38,10 +35,12 @@
 <script>
 import Datepicker from 'vuejs-datepicker'
 import NProgress from 'nprogress'
-import BaseInput from "@/components/BaseInput";
+import BaseInput from '@/components/BaseInput'
+import BaseSelect from '@/components/BaseSelect'
 
 export default {
   components: {
+    BaseSelect,
     BaseInput,
     Datepicker
   },
